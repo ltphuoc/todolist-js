@@ -73,7 +73,35 @@ function createTodoElement(todo) {
     });
   }
 
+  // add click event for edit button
+  const editButton = todoElement.querySelector('button.edit');
+  if (editButton) {
+    editButton.addEventListener('click', () => {
+      // lasted todo data
+      const todoList = getTodoList();
+      const lastedTodo = todoList.find((x) => x.id === todo.id);
+      if (!lastedTodo) return;
+      // find todo
+      // populate data to todoForm
+      populateTodoForm(lastedTodo);
+    });
+  }
+
   return todoElement;
+}
+
+function populateTodoForm(todo) {
+  // query todoForm
+  // dataset.id = todo.id
+  const todoForm = document.getElementById('todoFormId');
+  if (!todoForm) return;
+
+  todoForm.dataset.id = todo.id;
+
+  // set value for form controls
+  // set todoText
+  const todoInput = document.getElementById('todoText');
+  if (todoInput) todoInput.value = todo.title;
 }
 
 function renderTodoList(todoList, ulElementId) {
@@ -96,6 +124,59 @@ function getTodoList() {
     return [];
   }
 }
+
+function handleTodoFormSubmit(event) {
+  event.preventDefault();
+
+  const todoForm = document.getElementById('todoFormId');
+  if (!todoForm) return;
+  const todoInput = document.getElementById('todoText');
+  if (!todoInput) return;
+
+  // determine add or edit
+  const isEdit = Boolean(todoForm.dataset.id);
+  if (isEdit) {
+    // find current todo
+    const todoList = getTodoList();
+    const index = todoList.findIndex((x) => x.id.toString() === todoForm.dataset.id);
+    if (index < 0) return;
+
+    // update content and status
+    todoList[index].title = todoInput.value;
+
+    // save
+    localStorage.setItem('todo_list', JSON.stringify(todoList));
+
+    // apply DOM
+    const liElement = document.querySelector(`ul#todoList > li[data-id="${todoForm.dataset.id}"]`);
+    if (liElement) {
+      // liElement.textContent = todoInput.value;
+      const titleElement = liElement.querySelector('.todo__title');
+      if (titleElement) titleElement.textContent = todoInput.value;
+
+      // update status
+    }
+  } else {
+    const newTodo = {
+      id: Date.now(),
+      title: todoInput.value,
+      status: 'pending',
+    };
+
+    const todoList = getTodoList();
+    todoList.push(newTodo);
+    localStorage.setItem('todo_list', JSON.stringify(todoList));
+
+    // apply DOM
+    const newLiElement = createTodoElement(newTodo);
+    const ulElement = document.getElementById('todoList');
+    ulElement.appendChild(newLiElement);
+  }
+
+  // reset form
+  delete todoForm.dataset.id;
+  todoForm.reset();
+}
 // main()
 (() => {
   // const todoList = [
@@ -109,4 +190,10 @@ function getTodoList() {
   // localStorage.setItem('todo_list',JSON.stringify(todoList));
   const todoList = getTodoList();
   renderTodoList(todoList, 'todoList');
+
+  // register submit event for todo todoForm
+  const todoForm = document.getElementById('todoFormId');
+  if (todoForm) {
+    todoForm.addEventListener('submit', handleTodoFormSubmit);
+  }
 })();
