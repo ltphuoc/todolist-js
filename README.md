@@ -8,7 +8,7 @@
 * Remove a todo
 * Search and filter todo
 
-* README.md file to demo how to show a description of a repo by default
+### README.md file to demo how to show a description of a repo by default
 ##### ©phuoclt2022  
 
 ### Screenshots:
