@@ -1,10 +1,14 @@
 # Welcome to TODOLIST REPOSITORY
 
-## This repo using JavaScript and local storage 
+## A simple todolist app using JavaScript and using local storage to store 
+### What it can do:
+* Render todo list
+* Add a new todo
+* Update a todo
+* Remove a todo
+* Search and filter todo
 
-* Source code to demo a basic todolist web app
 * README.md file to demo how to show a description of a repo by default
-
 ##### ©phuoclt2022  
 
 ### Screenshots:
