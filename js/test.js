@@ -14,8 +14,8 @@ function createTodoElement(todo, param) {
   if (!liTitleElement) return;
   liTitleElement.textContent = todo.title;
 
-  // check if we should show or not
-  todoElement.hidden = !isMatch(todoElement, param);
+  // // check if we should show or not
+  // todoElement.hidden = !isMatch(todoElement, param);
 
   // render todo status
   const divElement = todoElement.querySelector('.todo');
