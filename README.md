@@ -8,4 +8,4 @@
 ##### ©phuoclt2022  
 
 ### Screenshots:
-![Source code of todoList using JavaScript](https://github.com/phuoclt2509/todoList-js/blob/main/screenshots/demo.png)
+![Source code of todoList using JavaScript](https://github.com/ltphuoc/todolist-js/blob/main/screenshots/finish-demo.png)
