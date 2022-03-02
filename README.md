@@ -1,5 +1,5 @@
 # Welcome to TODOLIST REPOSITORY
- A simple todolist app using JavaScript and using local storage to store 
+ A simple todolist app using Javascript and using local storage to store 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -10,10 +10,6 @@
 * Remove a todo
 * Search and filter todo
 
-### Built with
-* HTML
-* CSS
-* Vanila JavaScript 
 ### Screenshots:
 ![Source code of todoList using JavaScript](https://github.com/ltphuoc/todolist-js/blob/main/screenshots/finish-demo.png)
 
